@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Home page", () => {
+test.describe("Home page with no auth", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("https://practicesoftwaretesting.com/");
   });
