@@ -6,7 +6,11 @@ test.describe("Home page with no auth", () => {
   });
 
   test("Check screenshot - no auth", async ({ page }) => {
-    await expect(page).toHaveScreenshot("home-no-auth.png");
+    await expect(page).toHaveScreenshot("home-no-auth.png", {
+    //Use 'mask' to block out a part of the page you do not wish to be included
+    //Will be covered in pink (default) box
+    mask: [page.getByAltText("Banner")],
+    });
   }) 
 
   test("Check sign in", async ({ page }) => {
