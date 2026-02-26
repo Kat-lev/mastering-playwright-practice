@@ -28,3 +28,15 @@ test.describe("Home page with no auth", () => {
     await expect(page.getByAltText("Thor Hammer")).toBeVisible();
   });
 });
+
+test.describe("Home page cusotmer 01 auth", () => {
+  test.use({ storageState: ".auth/customer01.json"});
+  test.beforeEach(async ({ page }) => {
+    await page.goto("https://practicesoftwaretesting.com/");
+  })
+  test("Check cust01 is signed in correctly", async ({ page }) => {
+    //Sign-in text should be visible as user should already be signed in. Use ".not" syntax.
+    await expect(page.getByTestId("nav-sign-in")).not.toBeVisible();
+    await expect(page.locator('[data-test="nav-menu"]')).toContainText("Jane Doe");
+  })
+})
