@@ -10,4 +10,9 @@ test("GET /products test", async ({ request }) => {
   expect(response.status()).toBe(200);
   //Create a variable which is this repsonse
   const body = await response.json();
+  //Add some assertions
+  //We see 9 products on product page
+  expect(body.data.length).toBe(9);
+  //There are 50 total products
+  expect(body.total).toBe(50);
 });
